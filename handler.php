@@ -16,6 +16,20 @@
 
 
 <?php
+if (strpos($_POST["ntp_servername"],'qwerty') !== false) {
+    echo 'No valid ip/dns name.';
+    break;
+}
+if (strpos($_POST["ntp_servername"],'192') !== false) {
+    echo 'No valid ip/dns name.';
+    break;
+}
+if ("" == trim($_POST["ntp_servername"])) {
+    echo 'No valid ip/dns name.';
+    break;
+}
+
+
 if (isset($_POST['opt0'])) {
                 echo "ntpdate -u ". $_POST["ntp_servername"];
                 $output = shell_exec('ntpq -c pe '. $_POST["ntp_servername"]);
